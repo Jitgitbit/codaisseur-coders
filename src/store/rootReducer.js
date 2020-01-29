@@ -15,8 +15,9 @@
 //   }
 // }
 import { combineReducers } from "redux";
-import developers from "./developers/reducer";
+import developersReducer from "./developers/reducer";
+import postReducer from './post/reducer';
 
 export default combineReducers({
-  developers,
+  developersReducer, postReducer
 });
