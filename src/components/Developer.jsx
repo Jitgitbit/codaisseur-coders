@@ -15,7 +15,7 @@ import React, { Component } from 'react'
 
 export default class Developer extends Component {
   render() {
-    console.log(this.props.dev)
+    console.log(this.props)
     return (
       <div>
         <h2>{this.props.name}</h2>
