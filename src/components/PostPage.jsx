@@ -18,9 +18,11 @@ class PostPage extends React.Component {
       //if(this.props.post){console.log('The post data', this.props.post.data)}
       const title = this.props.post.data.title;
       console.log(title);
+      const content = this.props.post.data.content;
       return (
         <div>
           <h1>{title}</h1>
+          <h2>{content}</h2>
         </div>
       );
     }
