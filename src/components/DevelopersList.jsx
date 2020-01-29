@@ -2,12 +2,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import api from "../api";
+import Developer from "./Developer";
 
 // The "unconnected" inner component:
 class DevelopersList extends React.Component {
   componentDidMount() {
     // Do the data fetch...
     api("/developers").then(data => {
+      console.log('data from', data )
       // Tell the Redux store the data has been fetched
       this.props.dispatch({
         type: "developers/FETCHED",
@@ -16,11 +18,18 @@ class DevelopersList extends React.Component {
     });
   }
   render() {
+    if(this.props.devs){console.log('The devs data', this.props.devs.rows)}
     const loading = !this.props.devs;
     return (
       <div>
         <h1>Codaisseur developers</h1>
-        {loading ? <p>Loading...</p> : <p>We have {this.props.devs.count} developers!</p>}
+          {loading ? <p>Loading...</p> : <p>We have {this.props.devs.count} developers!</p>}
+        <h2>
+          {!loading && this.props.devs.rows.map((dev, index) => (          //!loading had to be added, because we otherwise would start from null, so the props of null can't be read, so this would give an error
+            <Developer name={dev.name} email={dev.email} key={index}/>      // key again! react!
+            ))
+          }
+        </h2>
       </div>
     );
   }
@@ -29,7 +38,7 @@ class DevelopersList extends React.Component {
 //  and passes down props derived from the store's state
 //  to the inner component:
 function mapStateToProps(reduxState) {
-  // console.log("redux state?", reduxState);
+   console.log("redux state?", reduxState);
   return {
     devs: reduxState.developers,
   };
