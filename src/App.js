@@ -1,15 +1,32 @@
-import React from 'react';
-import './App.css';
-import DevelopersList from './components/DevelopersList';
-// import Developer from './components/Developer';
+// import React from 'react';
+// import './App.css';
+// import DevelopersList from './components/DevelopersList';
 
-function App() {
-  return (
-    <div className="App">
-      <DevelopersList/>
-      {/* <Developer/> */}
-    </div>
-  );
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import DevelopersList from "./components/DevelopersList";
+import Homepage from "./components/Homepage";
+import "./App.css";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <Route path="/developers" component={DevelopersList} />
+          <Route component={Homepage} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+// function App() {
+//   return (
+//     <div className="App">
+//       <DevelopersList/>
+//       {/* <Developer/> */}
+//     </div>
+//   );
+// }
+//export default App;
