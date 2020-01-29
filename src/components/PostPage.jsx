@@ -9,16 +9,28 @@ class PostPage extends React.Component {
     this.props.dispatch(fetchPost(post_id))
   }
   render() {
-    const title = "??";
-    return (
+    if(!this.props.post.data) {
+      return (
       <div>
-        <h1>{title}</h1>
         <p>Loading...</p>
-      </div>
-    );
+      </div>)
+    } else {
+      //if(this.props.post){console.log('The post data', this.props.post.data)}
+      const title = this.props.post.data.title;
+      console.log(title);
+      return (
+        <div>
+          <h1>{title}</h1>
+        </div>
+      );
+    }
+   
   }
 }
 function mapStateToProps(reduxState) {
-  return {};
+  console.log("redux state?", reduxState);
+  return {
+    post: reduxState.post,
+  };
 }
 export default connect(mapStateToProps)(PostPage);

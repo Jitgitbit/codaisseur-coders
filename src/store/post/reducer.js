@@ -1,4 +1,4 @@
-const initialState = { post: null, comments: [] };
+const initialState = { data: null, comments: [] };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -6,7 +6,7 @@ export default function reducer(state = initialState, action) {
       // => Ask yourself: what is action.payload?
       return {
         ...state,
-        post: action.payload,
+        data: action.payload,
       };
     }
     default: {
