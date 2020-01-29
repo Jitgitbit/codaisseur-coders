@@ -9,6 +9,12 @@ export default function reducer(state = initialState, action) {
         data: action.payload,
       };
     }
+    case 'post/COMMENTS_FETCHED': {
+      return {
+        ...state,
+        comments: [...action.payload.rows], //OF COOOOOUUUURSE!!
+      }
+    }
     default: {
       return state;
     }
