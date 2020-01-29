@@ -5,11 +5,11 @@ export function fetchPost(id) {
     api(`/posts/${id}`)
       .then(post => {
         dispatch(setPost(post));
+        console.log(post);
       })
   }
 }
 export function setPost(post) {
-  console.log(post);
   return {
     type: "post/FETCHED",
     payload: post

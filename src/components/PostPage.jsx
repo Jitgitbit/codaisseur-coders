@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import {fetchPost} from '../store/post/actions';
 
 class PostPage extends React.Component {
   componentDidMount() {
     const post_id = this.props.match.params.id;
     console.log("Now let's fetch this post:", post_id);
+    this.props.dispatch(fetchPost(post_id))
   }
   render() {
     const title = "??";
