@@ -25,8 +25,8 @@ class PostPage extends React.Component {
         <div>
           <h1>{title}</h1>
           content: <ReactMarkdown source={content} />
-          comments: {comments.map(comment => (
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingLeft: '50px', paddingRight: '50px'}}>
+          comments: {comments.map((comment, index) => (
+            <div key={index} style={{ display: 'flex', justifyContent: 'space-between', paddingLeft: '50px', paddingRight: '50px'}}>
               <h3>{comment.text}</h3>
               <h3>{comment.developer.name}</h3>
             </div>
